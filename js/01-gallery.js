@@ -1,9 +1,8 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
-
 //console.log(galleryItems);
 
-const ul = document.querySelector('gallery');
+//const ul = document.querySelector('gallery');
 
 const markup = galleryItems.map((g) => `<li class="gallery__item">
 <a class="gallery__link" href="${g.original}">
@@ -15,9 +14,12 @@ ulGallery.insertAdjacentHTML('afterbegin',markup);
 
 ulGallery.addEventListener('click', (e) => { 
     if (e.target.nodeName !== 'IMG') return;
-     e.preventDefault();
+    e.preventDefault();
+    
+    const screenWidth = window.screen.availWidth;
+    const screenHeight = window.screen.availHeight;
     const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" width="800" height="600">
+    <img src="${e.target.dataset.source}" width="${screenWidth}" height="${screenHeight}">
 `);
     instance.show();
 
